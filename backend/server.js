@@ -7,7 +7,7 @@ app.use(express.json());
 
 // Basic route definition
 app.get('/', (req, res) => {
-  res.send('Hello, World!');
+  res.send('fucking hell');
 });
 
 // Start listening for incoming connections
