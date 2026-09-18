@@ -188,6 +188,11 @@ export default function Register() {
               type="submit"
               className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500
                          font-medium transition"
+                            onClick={() => {
+                          // Handle login logic here
+                          // For now, just redirect to the planner page
+                          window.location.href = "/planner";
+                        }}
             >
               Create account
             </button>
