@@ -21,5 +21,5 @@ app.use('/suggestions', suggestionsRoutes);
 app.use('/departments', departmentsRoutes);
 app.use('/admin', adminRoutes);
 
-const port = process.env.PORT || 4000;
-app.listen(port, () => console.log(`uni-planner-backend listening on :${port}`));
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log(`backend listening on :${port}`));

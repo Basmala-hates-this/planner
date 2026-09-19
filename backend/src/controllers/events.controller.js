@@ -21,7 +21,7 @@ export async function updateEvent(req, res) {
   // admin can edit any event within their department; superadmin — any.
   res.status(501).json({ error: 'Not implemented yet' });
 }
-
+ 
 export async function deleteEvent(req, res) {
   res.status(501).json({ error: 'Not implemented yet' });
 }

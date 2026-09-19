@@ -51,3 +51,16 @@ export function requireRole(...allowedRoles) {
     next();
   };
 }
+
+
+export async function verifyToken(req, res, next) {
+  const authHeader = req.headers.authorization || '';
+  const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : null;
+  if (!token) return res.status(401).json({ error: 'Missing auth token' });
+
+  const { data, error } = await supabaseAnon.auth.getUser(token);
+  if (error || !data?.user) return res.status(401).json({ error: 'Invalid or expired token' });
+
+  req.authUser = data.user; // raw Supabase auth user, not the app profile
+  next();
+}

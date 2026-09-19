@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { requireAuth } from '../middleware/auth.js';
+import { requireAuth,verifyToken } from '../middleware/auth.js';
 import * as authController from '../controllers/auth.controller.js';
 
 const router = Router();
@@ -10,10 +10,10 @@ const router = Router();
 
 // Create the app-level `users` row + department membership after
 // Supabase Auth signup. Body: { role: 'student' | 'professor', departmentIds, universityIdDocumentUrl }
-router.post('/complete-profile', requireAuth, authController.completeProfile);
+router.post('/complete-profile', verifyToken, authController.completeProfile);
 
 // Redeem a superadmin-issued admin key. Body: { key, email, departmentId }
 // Single-use: succeeds once, then the key is marked redeemed regardless of expiry.
-router.post('/redeem-admin-key', authController.redeemAdminKey);
+router.post('/redeem-admin-key', verifyToken, authController.redeemAdminKey);
 
 export default router;
